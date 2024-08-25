@@ -1,0 +1,278 @@
+[gd_scene load_steps=20 format=3 uid="uid://mgqlmm0duoke"]
+
+[ext_resource type="Script" path="res://puzzle/cadeado/puzzle_cadeado.gd" id="1_3irgw"]
+[ext_resource type="Texture2D" uid="uid://bkrcficbeyokn" path="res://puzzle/cadeado/fundo_lock.png" id="1_f7muh"]
+[ext_resource type="Texture2D" uid="uid://dvyuix74h7we2" path="res://puzzle/cadeado/lockpick.png" id="2_di3dm"]
+[ext_resource type="Texture2D" uid="uid://cqjy3xqgxclbs" path="res://puzzle/cadeado/cadeado.png" id="2_nyeqk"]
+[ext_resource type="FontFile" uid="uid://clid6sm7m7fpc" path="res://fontes-letra/Furore/Furore.otf" id="4_5n6rc"]
+[ext_resource type="Texture2D" uid="uid://dvbi3fbruvm2w" path="res://personagem_vr/seta_cima_novo.png" id="6_dqw2b"]
+[ext_resource type="Texture2D" uid="uid://bxjayjsg3aqkx" path="res://personagem_vr/seta_cima_pressed.png" id="7_8kxpc"]
+[ext_resource type="Texture2D" uid="uid://b6e2g2w46ntpt" path="res://personagem_vr/seta_baixo.png" id="8_6o1oq"]
+[ext_resource type="Texture2D" uid="uid://c1kmci84pthos" path="res://personagem_vr/seta_baixo_pressed.png" id="9_04kad"]
+[ext_resource type="AudioStream" uid="uid://n6fsr1cc73dx" path="res://audio/lock-the-door-46014.mp3" id="10_4yhdc"]
+[ext_resource type="AudioStream" uid="uid://dkwphria12thh" path="res://audio/key-twist-in-lock-47832.mp3" id="10_epx4n"]
+[ext_resource type="Texture2D" uid="uid://cnwkcyw0wklj4" path="res://icon/gdb-gamepad-2(all)/gdb-xbox-2.png" id="12_tq5a3"]
+[ext_resource type="Texture2D" uid="uid://c4bp5yj7nwdl6" path="res://icon/gdb-gamepad-2(all)/gdb-keyboard-2.png" id="13_dqcb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdppm"]
+size = Vector2(5.84976, 0.524232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4nlb"]
+size = Vector2(17, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi1ac"]
+size = Vector2(20, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gg36"]
+size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuiwi"]
+size = Vector2(154.4, 13)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h00yq"]
+
+[node name="puzzle_cadeado" type="CanvasLayer"]
+script = ExtResource("1_3irgw")
+
+[node name="FundoLock" type="Sprite2D" parent="."]
+position = Vector2(543, 304)
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("1_f7muh")
+
+[node name="lock_pick" type="CharacterBody2D" parent="."]
+position = Vector2(545, 489)
+collision_mask = 8
+
+[node name="Lockpick_sprite" type="Sprite2D" parent="lock_pick"]
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_di3dm")
+
+[node name="collision" type="CollisionShape2D" parent="lock_pick"]
+position = Vector2(9, -50.0039)
+rotation = -0.00788121
+scale = Vector2(3.8, 3.8)
+shape = SubResource("RectangleShape2D_bdppm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lock_pick"]
+position = Vector2(-2.5, 40)
+shape = SubResource("RectangleShape2D_n4nlb")
+
+[node name="area" type="Area2D" parent="lock_pick"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lock_pick/area"]
+position = Vector2(10, -50)
+shape = SubResource("RectangleShape2D_qi1ac")
+
+[node name="cadeado" type="Sprite2D" parent="."]
+position = Vector2(542, 351)
+scale = Vector2(10, 10)
+texture = ExtResource("2_nyeqk")
+region_enabled = true
+region_rect = Rect2(4, 8, 24, 24)
+
+[node name="area_destrancar" type="ReferenceRect" parent="."]
+offset_left = 487.8
+offset_top = 393.8
+offset_right = 600.8
+offset_bottom = 456.8
+border_width = 1.7
+
+[node name="trancas" type="Node2D" parent="area_destrancar"]
+position = Vector2(-500.8, -291.8)
+
+[node name="tranca" type="Area2D" parent="area_destrancar/trancas"]
+position = Vector2(576, 320)
+scale = Vector2(1.02083, 0.612903)
+
+[node name="collision" type="CollisionShape2D" parent="area_destrancar/trancas/tranca"]
+shape = SubResource("RectangleShape2D_7gg36")
+
+[node name="tranca2" type="Area2D" parent="area_destrancar/trancas"]
+position = Vector2(576, 328)
+scale = Vector2(1.02083, 0.612903)
+
+[node name="collision" type="CollisionShape2D" parent="area_destrancar/trancas/tranca2"]
+shape = SubResource("RectangleShape2D_7gg36")
+
+[node name="tranca3" type="Area2D" parent="area_destrancar/trancas"]
+position = Vector2(576, 336)
+scale = Vector2(1.02083, 0.612903)
+
+[node name="collision" type="CollisionShape2D" parent="area_destrancar/trancas/tranca3"]
+shape = SubResource("RectangleShape2D_7gg36")
+
+[node name="tranca4" type="Area2D" parent="area_destrancar/trancas"]
+position = Vector2(576, 344)
+scale = Vector2(1.02083, 0.612903)
+
+[node name="collision" type="CollisionShape2D" parent="area_destrancar/trancas/tranca4"]
+shape = SubResource("RectangleShape2D_7gg36")
+
+[node name="tranca5" type="Area2D" parent="area_destrancar/trancas"]
+position = Vector2(576, 352)
+scale = Vector2(1.02083, 0.612903)
+
+[node name="collision" type="CollisionShape2D" parent="area_destrancar/trancas/tranca5"]
+shape = SubResource("RectangleShape2D_7gg36")
+
+[node name="tranca6" type="Area2D" parent="area_destrancar/trancas"]
+position = Vector2(576, 312)
+scale = Vector2(1.02083, 0.612903)
+
+[node name="collision" type="CollisionShape2D" parent="area_destrancar/trancas/tranca6"]
+shape = SubResource("RectangleShape2D_7gg36")
+
+[node name="tranca7" type="Area2D" parent="area_destrancar/trancas"]
+position = Vector2(576, 304)
+scale = Vector2(1.02083, 0.612903)
+
+[node name="collision" type="CollisionShape2D" parent="area_destrancar/trancas/tranca7"]
+shape = SubResource("RectangleShape2D_7gg36")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="area_destrancar"]
+collision_layer = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="area_destrancar/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(113.2, 1.20007, 113.2, 63.2001, 0.200073, 63.2001, 0.200073, 0.200073, 113.2, 0.200073, 113.2, -1.79993, -1.79993, -1.79993, -1.79993, 64.2001, 116.2, 65.2001, 116.2, -1.79993, 113.2, -1.79993)
+
+[node name="cadeado_collision" type="StaticBody2D" parent="area_destrancar"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_destrancar/cadeado_collision"]
+position = Vector2(56.0001, 73.7001)
+shape = SubResource("RectangleShape2D_uuiwi")
+
+[node name="feedback" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="feedback"]
+wait_time = 2.0
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="feedback"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -182.0
+offset_right = 130.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.964706, 0.964706, 0.964706, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_5n6rc")
+theme_override_font_sizes/font_size = 16
+max_value = 3.0
+rounded = true
+
+[node name="pregresso_label" type="Label" parent="feedback"]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 94.0
+offset_right = 664.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.278431, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_5n6rc")
+theme_override_font_sizes/font_size = 32
+text = "PROGRESSO"
+
+[node name="Label" type="Label" parent="feedback"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -20.0
+offset_right = 225.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.964706, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_5n6rc")
+theme_override_font_sizes/font_size = 32
+text = "fgdgdgfdgfdsgdsgfdfg"
+
+[node name="controles" type="Node2D" parent="."]
+
+[node name="up" type="TouchScreenButton" parent="controles"]
+position = Vector2(877, 266)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("6_dqw2b")
+texture_pressed = ExtResource("7_8kxpc")
+
+[node name="down" type="TouchScreenButton" parent="controles"]
+position = Vector2(877, 418)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("8_6o1oq")
+texture_pressed = ExtResource("9_04kad")
+
+[node name="certo" type="TouchScreenButton" parent="controles"]
+position = Vector2(182, 418)
+scale = Vector2(4.5, 4.5)
+shape = SubResource("CircleShape2D_h00yq")
+
+[node name="Gdb-xbox-2" type="Sprite2D" parent="controles/certo"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("12_tq5a3")
+region_enabled = true
+region_rect = Rect2(48, 304, 16, 16)
+
+[node name="icon" type="Sprite2D" parent="controles/certo"]
+texture = ExtResource("13_dqcb5")
+region_enabled = true
+region_rect = Rect2(480, 16, 16, 12)
+
+[node name="label_sens" type="Label" parent="controles"]
+offset_left = 76.0
+offset_top = 174.0
+offset_right = 326.0
+offset_bottom = 214.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_5n6rc")
+theme_override_font_sizes/font_size = 32
+text = "sensibilidade"
+
+[node name="value_sens" type="SpinBox" parent="controles"]
+offset_left = 339.0
+offset_top = 181.0
+offset_right = 422.063
+offset_bottom = 212.0
+value = 100.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_4yhdc")
+volume_db = 13.333
+bus = &"efeito"
+
+[node name="passou_efeito" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_epx4n")
+volume_db = -4.992
+pitch_scale = 2.98
+bus = &"efeito"
+
+[connection signal="area_entered" from="lock_pick/area" to="." method="_on_area_area_entered"]
+[connection signal="timeout" from="feedback/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="controles/up" to="." method="_on_up_pressed"]
+[connection signal="released" from="controles/up" to="." method="_on_up_released"]
+[connection signal="pressed" from="controles/down" to="." method="_on_down_pressed"]
+[connection signal="released" from="controles/down" to="." method="_on_down_released"]
+[connection signal="pressed" from="controles/certo" to="." method="_on_certo_pressed"]
